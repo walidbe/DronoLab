@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'src',
+    'DronoLab.DronoSolutionApp.src',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -120,5 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
-STATIC_ROOT = "src/templates/src/static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'src/static/')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, 'static/'),
+    os.path.join(STATIC_URL, "static"),
+    )
