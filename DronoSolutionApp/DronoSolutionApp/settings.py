@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'DronoLab.DronoSolutionApp.src',
+    'src',
 ]
 
 MIDDLEWARE_CLASSES = [
