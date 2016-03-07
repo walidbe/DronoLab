@@ -71,26 +71,29 @@
         <div class="row">
 
             <div class="col-md-8">
-
+                {% if images.source == None %}
+                    <img class="img-responsive" src="{% static  'media/no-image.png' %}" alt="">
+                {% else %}
                 {% with 'media/'|add:images.source as image_static %}
                 <img class="img-responsive" src="{% static  image_static %}" alt="">
                 {% endwith %}
+                {% endif %}
             </div>
             <div class="col-md-4">
 
-                    <a class="btn btn-primary btn-lg" href="{% url 'post_pic' %}">Prendre une photo</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'home' %}">Prendre une photo</a>
                    <a class="btn btn-danger btn-lg" href="#">Arrêter le drône</a>
             </div>
 
             <div class="col-md-4">
                 <h3>Image Description</h3>
-                <p>Une brève description. {{images.source}}</p>
+                <p>{{images.source}}</p>
                 <h3>Image Details</h3>
                 <ul>
-                    <li>Pression : </li>
-                    <li>Altitude :</li>
-                    <li>État :</li>
-                    <li>Débit connextion :</li>
+                    <li>Pression : {{images.pression}} </li>
+                    <li>Altitude : {{images.altitude}}</li>
+                    <li>État : Aucun</li>
+                    <li>Débit connextion : {{images.download_speed}}</li>
                 </ul>
             </div>
 
@@ -105,30 +108,19 @@
             <div class="col-lg-12">
                 <h3 class="page-header">Anciennes images</h3>
             </div>
-
-            <div class="col-sm-3 col-xs-6">
+            {% for element in images2 %}
+                <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="{% static 'media\example.png' %}" alt="">
+                    {% if element.source == None %}
+                    <img class="img-responsive portfolio-item" src="{% static  'media/no-image.png' %}" alt="">
+                {% else %}
+                {% with 'media/'|add:element.source as image_static %}
+                <img class="img-responsive portfolio-item" src="{% static  image_static %}" alt="">
+                {% endwith %}
+                {% endif %}
                 </a>
             </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="{% static 'media\example.png' %}" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="{% static 'media\example.png' %}" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="{% static 'media\example.png' %}" alt="">
-                </a>
-            </div>
+            {% endfor %}
             {% endblock %}
         </div>
         <!-- /.row -->
