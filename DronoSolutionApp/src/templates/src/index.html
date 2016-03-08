@@ -70,10 +70,10 @@
 
             <div class="col-md-8">
                 {% if images.source == None %}
-                    <img class="img-responsive" src="{% static  'media/no-image.png' %}" alt="">
+                    <img class="img-responsive" src="{% static  'media/no-image.png' %}" height="90%" width="90%" alt="">
                 {% else %}
                 {% with 'media/'|add:images.source as image_static %}
-                <img class="img-responsive" src="{% static  image_static %}" alt="">
+                <img class="img-responsive" src="{% static  image_static %}" height="75%" width="75%" alt="">
                 {% endwith %}
                 {% endif %}
             </div>
@@ -95,10 +95,8 @@
                             <li>Altitude : {{images.altitude}} m</li>
                             <li>Débit connextion : {{images.download_speed}} Mpbs</li>
                          </ul>
-                        <div class="panel-body">Description</div>
-                            <div class="panel-footer">
-                              <p>{{images.source}}</p>
-                            </div>
+                        <div class="panel-body">Description : {{images.source}}</div>
+
                     </div>
                 </div>
             </div>
@@ -118,10 +116,10 @@
                 <div class="col-sm-3 col-xs-6">
                 <a href="#">
                     {% if element.source == None %}
-                    <img class="img-responsive portfolio-item" src="{% static  'media/no-image.png' %}" alt="">
+                    <img class="img-responsive portfolio-item" src="{% static  'media/no-image.png' %}" height="90%" width="90%" alt="">
                 {% else %}
                 {% with 'media/'|add:element.source as image_static %}
-                <img class="img-responsive portfolio-item" src="{% static  image_static %}" alt="">
+                <img class="img-responsive portfolio-item" src="{% static  image_static %}" height="75%" width="75%" alt="">
                 {% endwith %}
                 {% endif %}
                 </a>
