@@ -86,15 +86,23 @@
             </div>
 
             <div class="col-md-4">
-                <h3>Image Description</h3>
-                <p>{{images.source}}</p>
-                <h3>Image Details</h3>
-                <ul>
-                    <li>Pression : {{images.pression}} </li>
-                    <li>Altitude : {{images.altitude}}</li>
-                    <li>État : Aucun</li>
-                    <li>Débit connextion : {{images.download_speed}}</li>
-                </ul>
+                </br>
+                </br>
+                <div class="panel panel-primary">
+                    <div class="panel-body">Détails</div>
+                    <div class="panel-footer">
+                         <ul>
+                             <li>État : <span style="color:#9FF781">Bon</span></li>
+                            <li>Pression : {{images.pression}} kPa</li>
+                            <li>Altitude : {{images.altitude}} m</li>
+                            <li>Débit connextion : {{images.download_speed}} Mpbs</li>
+                         </ul>
+                        <div class="panel-body">Description</div>
+                            <div class="panel-footer">
+                              <p>{{images.source}}</p>
+                            </div>
+                    </div>
+                </div>
             </div>
 
 
