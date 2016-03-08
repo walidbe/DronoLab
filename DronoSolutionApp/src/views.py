@@ -17,21 +17,22 @@ def home(request):
         return render(request, 'src/index.html', {'images': images,'images2':Arry.myObjects})
 
     else :
-         images = Image.objects.order_by('created_date')[C.getCount(0)]
-         if C.getCount(0) > 0 :
-
-            for i in range(C.getCount(0)) :
-                if i==3:
-                  break
-                nextElement = Arry.myObjects[i+1]
-                Arry.myObjects[i+1] = Arry.myObjects[i]
-                Arry.myObjects[i+2] = nextElement
-            Arry.myObjects[0] = images
-         else:
-            Arry.myObjects[C.getCount(0)] = images
-
-         C.addCount(0)
-         return render(request, 'src/index.html', {'images': images,'images2':Arry.myObjects})
+        try:
+            images = Image.objects.order_by('created_date')[C.getCount(0)]
+            if C.getCount(0) > 0:
+                arrayTemp = []
+                for i in range(len(Arry.myObjects)):
+                    if i == 0:
+                        arrayTemp.append(images)
+                    else:
+                        arrayTemp.append(Arry.myObjects[i-1])
+                Arry.myObjects = arrayTemp
+            else:
+                Arry.myObjects[0] = images
+            C.addCount(0)
+        except IndexError:
+            images = Arry.myObjects[0]
+        return render(request, 'src/index.html', {'images': images,'images2':Arry.myObjects})
 
 def post_pic(request):
 
