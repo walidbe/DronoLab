@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, render
 def home(request):
 
     if C.getCount(0) == -1:
+
         C.addCount(0)
         Arry.refresh(0)
         try:
@@ -18,6 +19,8 @@ def home(request):
 
     else :
         try:
+
+
             images = Image.objects.order_by('created_date')[C.getCount(0)]
             if C.getCount(0) > 0:
                 arrayTemp = []
@@ -33,6 +36,11 @@ def home(request):
         except IndexError:
             images = Arry.myObjects[0]
         return render(request, 'src/index.html', {'images': images,'images2':Arry.myObjects})
+
+
+
+def takeIntervalTime(request):
+    return HttpResponse("test")
 
 def post_pic(request):
 

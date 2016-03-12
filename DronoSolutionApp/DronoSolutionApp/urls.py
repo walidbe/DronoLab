@@ -21,5 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'src.views.home', name='home'),
+    url(r'^$', 'src.views.takeIntervalTime', name='takeIntervalTime'),
     url(r'^post_pic/$', 'src.views.post_pic', name='post_pic'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

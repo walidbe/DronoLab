@@ -15,6 +15,22 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}" />
+    <script src="{% static 'js/jquery-1.12.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+    $(document).ready(function(){
+
+        $("#hide").click(function(){
+        $("#intervalShow").hide();
+        });
+        $("#show").click(function(){
+        $("#intervalShow").show();
+        });
+    });
+</script>
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,9 +94,23 @@
                 {% endif %}
             </div>
             <div class="col-md-4">
+                    <div class="dropdown">
+                    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Prendre Photo
+                     <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' %}">Une seule photo</a></li>
+                        <li><a href="#" id="show">Plusieurs photos</a></li>
+                         </ul>
+                          <a class="btn btn-danger btn-lg" href="#">Arrêter le drône</a>
+                    </div>
+                <form method="get">
+                <div class="controls" id="intervalShow" style="display: none">
+                <input type="text" name="nameInterval" id="nameInterval" placeholder="Entrer l'interval en seconde" class="span3">
+                    <a class="btn btn-success" href="{% url 'takeIntervalTime' %}" id="hide">Démarrer</a>
+                </div>
+                </form>
 
-                    <a class="btn btn-primary btn-lg" href="{% url 'home' %}">Prendre une photo</a>
-                   <a class="btn btn-danger btn-lg" href="#">Arrêter le drône</a>
+
             </div>
 
             <div class="col-md-4">
@@ -146,11 +176,7 @@
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
   {% endblock %}
 </body>
 
